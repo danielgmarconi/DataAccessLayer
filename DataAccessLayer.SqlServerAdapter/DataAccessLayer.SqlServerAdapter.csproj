@@ -4,6 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>DataAccessLayer.SqlServerAdapter</PackageId>
+    <Title>DataAccessLayer.SqlServerAdapter</Title>
+    <Authors>Daniel G. Marconi</Authors>
+    <Company>Marconi Soluções Inovadoras</Company>
+    <Product>DataAccessLayer.SqlServerAdapter</Product>
   </PropertyGroup>
 
   <ItemGroup>
