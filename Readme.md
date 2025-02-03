@@ -31,7 +31,7 @@ User _user = new User();
 _user.Email = "user@teste.com";
 _user.Senha = "test123";
 _ISQLServerAdapter.Open();
-var list = _ISQLServerAdapter.ExecuteReader<User>("spUser", new User() { Id = 1 });
+var list = _ISQLServerAdapter.ExecuteReader<User>("StorageProcedureUserSelect", new User() { Id = 1 });
 _ISQLServerAdapter.Close();
 
 ```
