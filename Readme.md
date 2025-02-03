@@ -5,23 +5,16 @@ Description
 -------------
 Data Access Layer facilitates access to the database in a performant and simplified way, with simple call construction, using dependency injection.
 
-Packages
---------
-
-DataAccessLayer.SqlServerAdapter
+Packages DataAccessLayer.SqlServerAdapter
 --------
 
 Package Purposes:
-* Dapper
-  * The core library
-* Dapper.EntityFramework
-  * Extension handlers for EntityFramework
-* Dapper.EntityFramework.StrongName
-  * Extension handlers for EntityFramework
-* Dapper.Rainbow
-  * Micro-ORM implemented on Dapper, provides CRUD helpers ([readme](Dapper.Rainbow/readme.md))
-* Dapper.SqlBuilder
-  * Component for building SQL queries dynamically and composably
+* ExecuteNonQuery
+  * Execution without returning information used for Update and Delete.
+* ExecuteScalar
+  * Execution with return of a single piece of information, used for Insert with return of the ID.
+* ExecuteReader
+  * Execution with multiple data return, used to return a Select.
 
 Features
 --------
