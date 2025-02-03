@@ -73,7 +73,7 @@ var services = new ServiceCollection();
 services.AddScoped<ISQLServerAdapter>(p => { return new SQLServerAdapter(_connectionstring); });
 var _ISQLServerAdapter = services.BuildServiceProvider().GetService<ISQLServerAdapter>();
 _ISQLServerAdapter.Open();
-var list = _ISQLServerAdapter.ExecuteReader<User>("StorageProcedureUserSelect", new User() { Id = 1 });
+var list = _ISQLServerAdapter.ExecuteReader<User>("spUserSelect", new User() { Id = 1 });
 _ISQLServerAdapter.Close();
 ```
 
