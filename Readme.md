@@ -20,8 +20,6 @@ Features
 --------
 Data Access Layer is a NuGet library that you can add in to your project that will enhance your ADO.NET.
 
-It provides multiple helpers, but the key APIs are:
-
 ``` csharp
 const string _connectionstring = "";
 var services = new ServiceCollection();
@@ -33,11 +31,35 @@ _user.Senha = "test123";
 _ISQLServerAdapter.Open();
 var list = _ISQLServerAdapter.ExecuteReader<User>("StorageProcedureUserSelect", new User() { Id = 1 });
 _ISQLServerAdapter.Close();
-
 ```
 
 Execute a query and map it to a list of typed objects
 -------------------------------------------------------
+
+``` sql
+create procedure [dbo].[spUserSelect]
+(
+	  @Id			bigint			= null
+	, @Email		varchar(200)	= null
+)
+as
+begin
+	set nocount on
+	select Id
+		 , Email
+		 , Senha
+		 , ChaveSenha
+	from 
+		User with(nolock) 
+	where
+		(@Id is null or Id=@Id)
+	and
+		(@Email is null or Email = @Email)
+	order by
+		  Email
+	asc
+end
+```
 
 ``` csharp
 public class Dog
