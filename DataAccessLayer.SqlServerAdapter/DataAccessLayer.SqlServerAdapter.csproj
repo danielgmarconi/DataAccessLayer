@@ -16,10 +16,15 @@
     <Copyright>Marconi Soluções Inovadoras</Copyright>
     <Version />
     <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
