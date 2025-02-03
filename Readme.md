@@ -23,14 +23,11 @@ Data Access Layer is a NuGet library that you can add in to your project that wi
 It provides multiple helpers, but the key APIs are:
 
 ``` csharp
-// insert/update/delete etc
-var count  = connection.Execute(sql [, args]);
+const string _connectionstring = "";
+var services = new ServiceCollection();
+services.AddScoped<ISQLServerAdapter>(p => { return new SQLServerAdapter(_connectionstring); });
 
-// multi-row query
-IEnumerable<T> rows = connection.Query<T>(sql [, args]);
-
-// single-row query ({Single|First}[OrDefault])
-T row = connection.QuerySingle<T>(sql [, args]);
+var _ISQLServerAdapter = services.BuildServiceProvider().GetService<ISQLServerAdapter>();
 ```
 
 where `args` can be (among other things):
