@@ -36,12 +36,6 @@ _ISQLServerAdapter.Close();
 
 ```
 
-where `args` can be (among other things):
-
-- a simple POCO (including anonyomous types) for named parameters
-- a `Dictionary<string,object>`
-- a `DynamicParameters` instance
-
 Execute a query and map it to a list of typed objects
 -------------------------------------------------------
 
