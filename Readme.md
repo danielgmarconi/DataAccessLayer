@@ -1,14 +1,15 @@
 Data Access Layer for .Net
 ========================================
 
-Release Notes
+Description
 -------------
-Located at [https://github.com/DapperLib/Dapper/releases](https://github.com/DapperLib/Dapper/releases/)
+Data Access Layer facilitates access to the database in a performant and simplified way, with simple call construction, using dependency injection.
 
 Packages
 --------
 
-MyGet Pre-release feed: https://www.myget.org/gallery/dapper
+DataAccessLayer.SqlServerAdapter
+--------
 
 Package Purposes:
 * Dapper
