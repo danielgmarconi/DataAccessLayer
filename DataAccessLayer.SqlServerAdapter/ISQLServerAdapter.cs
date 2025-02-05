@@ -21,10 +21,16 @@ public interface ISQLServerAdapter
     object ExecuteScalarTrans(CommandType commandType, string commandText);
     object ExecuteScalarTrans(CommandType commandType, string commandText, object objectValue);
     object ExecuteScalarTrans(string spName, object objectValue);
-    public List<T> ExecuteReader<T>(CommandType commandType, string commandText) where T : new();
-    public List<T> ExecuteReader<T>(CommandType commandType, string commandText, object valor) where T : new();
-    public List<T> ExecuteReader<T>(string spName, object valor) where T : new();
-    public List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText) where T : new();
-    public List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText, object valor) where T : new();
-    public List<T> ExecuteReaderTrans<T>(string spName, object valor) where T : new();
+    List<T> ExecuteReader<T>(CommandType commandType, string commandText) where T : new();
+    List<T> ExecuteReader<T>(CommandType commandType, string commandText, object objectValue) where T : new();
+    List<T> ExecuteReader<T>(string spName, object objectValue) where T : new();
+    List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText) where T : new();
+    List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText, object objectValue) where T : new();
+    List<T> ExecuteReaderTrans<T>(string spName, object objectValue) where T : new();
+    Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText) where T : new();
+    Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new();
+    Task<List<T>> ExecuteReaderAsync<T>(string spName, object objectValue) where T : new();
+    Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText) where T : new();
+    Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new();
+    Task<List<T>> ExecuteReaderTransAsync<T>(string spName, object objectValue) where T : new();
 }

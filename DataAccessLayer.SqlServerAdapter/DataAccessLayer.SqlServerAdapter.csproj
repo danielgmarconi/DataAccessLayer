@@ -8,13 +8,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId></PackageId>
     <Title>DataAccessLayer</Title>
+	<Version>1.1.0</Version>
     <Authors>Daniel G. Marconi</Authors>
     <Company>Marconi Soluções Inovadoras</Company>
     <Product>DataAccessLayer.SqlServerAdapter</Product>
     <RepositoryUrl>https://github.com/danielgmarconi/DataAccessLayer</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Marconi Soluções Inovadoras</Copyright>
-    <Version />
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
   </PropertyGroup>
