@@ -117,5 +117,4 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         }
         return item;
     }
-
 }
