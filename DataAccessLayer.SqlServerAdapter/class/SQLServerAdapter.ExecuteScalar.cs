@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Reflection;
 
 namespace DataAccessLayer.SqlServerAdapter;
 
@@ -33,6 +32,34 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         }
     }
 
+    public async Task<object> ExecuteScalarAsync(CommandType commandType, string commandText) => await ExecuteScalarAsync(commandType, commandText, null);
+    public async Task<object> ExecuteScalarAsync(CommandType commandType, string commandText, object objectValue)
+    {
+        if (connection == null) throw new ArgumentNullException("connection");
+        SqlCommand cmd = new SqlCommand();
+        bool mustCloseConnection = false;
+        PrepareCommand(cmd, connection, null, commandType, commandText, AssignParameterValues(objectValue), out mustCloseConnection);
+        object retval = await cmd.ExecuteScalarAsync();
+        cmd.Parameters.Clear();
+        if (mustCloseConnection)
+            connection.Close();
+        return retval;
+    }
+    public async Task<object> ExecuteScalarAsync(string spName, object objectValue)
+    {
+        if (connection == null) throw new ArgumentNullException("connection");
+        if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
+        if (objectValue != null)
+        {
+            return await ExecuteScalarAsync(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+        }
+        else
+        {
+            return await ExecuteScalarAsync(CommandType.StoredProcedure, spName);
+        }
+    }
+
+
     public object ExecuteScalarTrans(CommandType commandType, string commandText) => ExecuteScalarTrans(commandType, commandText, null);
     public object ExecuteScalarTrans(CommandType commandType, string commandText, object objectValue)
     {
@@ -57,6 +84,33 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         else
         {
             return ExecuteScalarTrans(CommandType.StoredProcedure, spName);
+        }
+    }
+
+    public async Task<object> ExecuteScalarTransAsync(CommandType commandType, string commandText) => await ExecuteScalarTransAsync(commandType, commandText, null);
+    public async Task<object> ExecuteScalarTransAsync(CommandType commandType, string commandText, object objectValue)
+    {
+        if (transaction == null) throw new ArgumentNullException("transaction");
+        if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+        SqlCommand cmd = new SqlCommand();
+        bool mustCloseConnection = false;
+        PrepareCommand(cmd, transaction.Connection, transaction, commandType, commandText, AssignParameterValues(objectValue), out mustCloseConnection);
+        object retval = await cmd.ExecuteScalarAsync();
+        cmd.Parameters.Clear();
+        return retval;
+    }
+    public async Task<object> ExecuteScalarTransAsync(string spName, object objectValue)
+    {
+        if (transaction == null) throw new ArgumentNullException("transaction");
+        if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+        if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
+        if (objectValue != null)
+        {
+            return await ExecuteScalarTransAsync(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+        }
+        else
+        {
+            return await ExecuteScalarTransAsync(CommandType.StoredProcedure, spName);
         }
     }
 }

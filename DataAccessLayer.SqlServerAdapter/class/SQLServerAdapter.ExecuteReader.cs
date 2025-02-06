@@ -79,7 +79,6 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         }
     }
 
-
     private async Task<List<T>> ExecuteReaderAsync<T>(SqlConnection connection, SqlTransaction transaction, CommandType commandType, string commandText, object objectValue) where T : new()
     {
         List<T> ret = new List<T>();
@@ -111,33 +110,33 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         }
         return ret;
     }
-    public Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText) where T : new() => ExecuteReaderAsync<T>(commandType, commandText, null);
-    public Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new()
+    public async Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText) where T : new() => await ExecuteReaderAsync<T>(commandType, commandText, null);
+    public async Task<List<T>> ExecuteReaderAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new()
     {
         if (connection == null) throw new ArgumentNullException("connection");
-        return ExecuteReaderAsync<T>(connection, null, commandType, commandText, objectValue);
+        return await ExecuteReaderAsync<T>(connection, null, commandType, commandText, objectValue);
     }
-    public Task<List<T>> ExecuteReaderAsync<T>(string spName, object objectValue) where T : new()
+    public async Task<List<T>> ExecuteReaderAsync<T>(string spName, object objectValue) where T : new()
     {
         if (connection == null) throw new ArgumentNullException("connection");
         if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
         if (objectValue != null)
         {
-            return ExecuteReaderAsync<T>(CommandType.StoredProcedure, spName, objectValue);
+            return await ExecuteReaderAsync<T>(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
-            return ExecuteReaderAsync<T>(CommandType.StoredProcedure, spName);
+            return await ExecuteReaderAsync<T>(CommandType.StoredProcedure, spName);
         }
     }
-    public Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText) where T : new() => ExecuteReaderTransAsync<T>(commandType, commandText, null);
-    public Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new()
+    public async Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText) where T : new() => await ExecuteReaderTransAsync<T>(commandType, commandText, null);
+    public async Task<List<T>> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText, object objectValue) where T : new()
     {
         if (transaction == null) throw new ArgumentNullException("transaction");
         if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
-        return ExecuteReaderAsync<T>(transaction.Connection, transaction, commandType, commandText, objectValue);
+        return await ExecuteReaderAsync<T>(transaction.Connection, transaction, commandType, commandText, objectValue);
     }
-    public Task<List<T>> ExecuteReaderTransAsync<T>(string spName, object objectValue) where T : new()
+    public async Task<List<T>> ExecuteReaderTransAsync<T>(string spName, object objectValue) where T : new()
     {
         if (transaction == null) throw new ArgumentNullException("transaction");
         if (transaction != null && transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
@@ -145,11 +144,11 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         if (objectValue != null)
         {
 
-            return ExecuteReaderTransAsync<T>(CommandType.StoredProcedure, spName, objectValue);
+            return await ExecuteReaderTransAsync<T>(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
-            return ExecuteReaderTransAsync<T>(CommandType.StoredProcedure, spName);
+            return await ExecuteReaderTransAsync<T>(CommandType.StoredProcedure, spName);
         }
     }
 }

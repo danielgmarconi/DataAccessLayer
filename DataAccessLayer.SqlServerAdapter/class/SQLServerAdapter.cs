@@ -102,7 +102,7 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         }
         return;
     }
-    private static T SetObject<T>(SqlDataReader dr) where T : new()
+    private T SetObject<T>(SqlDataReader dr) where T : new()
     {
         T item = new T();
         var Properties = item.GetType().GetProperties();
