@@ -9,11 +9,11 @@ Packages DataAccessLayer.SqlServerAdapter
 --------
 
 Package Purposes:
-* ExecuteNonQuery
+* ExecuteNonQuery, ExecuteNonQueryAsync, ExecuteNonQueryTrans and ExecuteNonQueryTransAsync
   * Execution without returning information used for Update and Delete.
-* ExecuteScalar
+* ExecuteScalar, ExecuteScalarAsync, ExecuteScalarTrans and ExecuteScalarTransAsync
   * Execution with return of a single piece of information, used for Insert with return of the ID.
-* ExecuteReader
+* ExecuteReader, ExecuteReaderAsync, ExecuteReaderTrans and ExecuteReaderTransAsync
   * Execution with multiple data return, used to return a Select.
 
 Features
