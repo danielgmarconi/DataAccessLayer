@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId></PackageId>
     <Title>DataAccessLayer</Title>
-	<Version>1.1.0</Version>
+	<Version>1.2.0</Version>
     <Authors>Daniel G. Marconi</Authors>
     <Company>Marconi Soluções Inovadoras</Company>
     <Product>DataAccessLayer.SqlServerAdapter</Product>
