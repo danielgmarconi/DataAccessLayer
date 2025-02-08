@@ -15,6 +15,37 @@ Package Purposes:
   * Execution with return of a single piece of information, used for Insert with return of the ID.
 * ExecuteReader, ExecuteReaderAsync, ExecuteReaderTrans and ExecuteReaderTransAsync
   * Execution with multiple data return, used to return a Select.
+ 
+Library methods
+--------
+* Non-asynchronous methods
+  * No transaction
+    * ExecuteNonQuery
+      * int ExecuteNonQuery(CommandType commandType, string commandText)
+      * int ExecuteNonQuery(CommandType commandType, string commandText, object objectValue)
+      * int ExecuteNonQuery(string spName, object objectValue)
+    * ExecuteScalar
+      * object ExecuteScalar(CommandType commandType, string commandText)
+      * object ExecuteScalar(CommandType commandType, string commandText, object objectValue)
+      * object ExecuteScalar(string spName, object objectValue)
+    * ExecuteReader
+      * List<T> ExecuteReader<T>(CommandType commandType, string commandText)
+      * List<T> ExecuteReader<T>(CommandType commandType, string commandText, object objectValue)
+      * List<T> ExecuteReader<T>(string spName, object objectValue)
+  * With transaction
+    * ExecuteNonQuery
+      * int ExecuteNonQueryTrans(CommandType commandType, string commandText)
+      * int ExecuteNonQueryTrans(CommandType commandType, string commandText, object objectValue)
+      * int ExecuteNonQueryTrans(string spName, object objectValue)
+    * ExecuteScalar
+      * object ExecuteScalarTrans(CommandType commandType, string commandText)
+      * object ExecuteScalarTrans(CommandType commandType, string commandText, object objectValue)
+      * object ExecuteScalarTrans(string spName, object objectValue)
+    * ExecuteReader
+      * List<T> ExecuteReadeTransr<T>(CommandType commandType, string commandText)
+      * List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText, object objectValue)
+      * List<T> ExecuteReaderTrans<T>(string spName, object objectValue)
+
 
 Features
 --------
