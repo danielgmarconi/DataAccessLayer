@@ -42,7 +42,7 @@ Library methods
       * object ExecuteScalarTrans(CommandType commandType, string commandText, object objectValue)
       * object ExecuteScalarTrans(string spName, object objectValue)
     * ExecuteReader
-      * List<T> ExecuteReadeTransr<T>(CommandType commandType, string commandText)
+      * List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText)
       * List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText, object objectValue)
       * List<T> ExecuteReaderTrans<T>(string spName, object objectValue)
 * Asynchronous methods
