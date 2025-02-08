@@ -18,7 +18,7 @@ Package Purposes:
  
 Library methods
 --------
-* Non-asynchronous methods
+* Non-asynchronous method
   * No transaction
     * ExecuteNonQuery
       * int ExecuteNonQuery(CommandType commandType, string commandText)
@@ -45,7 +45,33 @@ Library methods
       * List<T> ExecuteReadeTransr<T>(CommandType commandType, string commandText)
       * List<T> ExecuteReaderTrans<T>(CommandType commandType, string commandText, object objectValue)
       * List<T> ExecuteReaderTrans<T>(string spName, object objectValue)
-
+* Asynchronous methods
+  * No transaction
+    * ExecuteNonQuery
+      * int ExecuteNonQueryAsync(CommandType commandType, string commandText)
+      * int ExecuteNonQueryAsync(CommandType commandType, string commandText, object objectValue)
+      * int ExecuteNonQueryAsync(string spName, object objectValue)
+    * ExecuteScalar
+      * object ExecuteScalarAsync(CommandType commandType, string commandText)
+      * object ExecuteScalarAsync(CommandType commandType, string commandText, object objectValue)
+      * object ExecuteScalarAsync(string spName, object objectValue)
+    * ExecuteReader
+      * List<T> ExecuteReaderAsync<T>(CommandType commandType, string commandText)
+      * List<T> ExecuteReaderAsync<T>(CommandType commandType, string commandText, object objectValue)
+      * List<T> ExecuteReaderAsync<T>(string spName, object objectValue)
+  * With transaction
+    * ExecuteNonQuery
+      * int ExecuteNonQueryTransAsync(CommandType commandType, string commandText)
+      * int ExecuteNonQueryTransAsync(CommandType commandType, string commandText, object objectValue)
+      * int ExecuteNonQueryTransAsync(string spName, object objectValue)
+    * ExecuteScalar
+      * object ExecuteScalarTransAsync(CommandType commandType, string commandText)
+      * object ExecuteScalarTransAsync(CommandType commandType, string commandText, object objectValue)
+      * object ExecuteScalarTransAsync(string spName, object objectValue)
+    * ExecuteReader
+      * List<T> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText)
+      * List<T> ExecuteReaderTransAsync<T>(CommandType commandType, string commandText, object objectValue)
+      * List<T> ExecuteReaderTransAsync<T>(string spName, object objectValue)
 
 Features
 --------
