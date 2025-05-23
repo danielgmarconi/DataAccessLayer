@@ -24,7 +24,7 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
         if (objectValue != null)
         {
-            return ExecuteScalar(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+            return ExecuteScalar(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
@@ -51,7 +51,7 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
         if (objectValue != null)
         {
-            return await ExecuteScalarAsync(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+            return await ExecuteScalarAsync(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
@@ -79,7 +79,7 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
         if (objectValue != null)
         {
-            return ExecuteScalarTrans(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+            return ExecuteScalarTrans(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
@@ -106,7 +106,7 @@ public partial class SQLServerAdapter : ISQLServerAdapter
         if (spName == null || spName.Length == 0) throw new ArgumentNullException("spName");
         if (objectValue != null)
         {
-            return await ExecuteScalarTransAsync(CommandType.StoredProcedure, spName, AssignParameterValues(objectValue));
+            return await ExecuteScalarTransAsync(CommandType.StoredProcedure, spName, objectValue);
         }
         else
         {
